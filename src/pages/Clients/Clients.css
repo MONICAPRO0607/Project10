@@ -1,0 +1,16 @@
+.clients {
+  padding: 2rem;
+}
+.clients h2 {
+  margin-bottom: 1rem;
+}
+.clients ul {
+  list-style: none;
+  padding: 0;
+}
+.clients li {
+  margin-bottom: 0.5rem;
+  background: #f2f2f2;
+  padding: 0.5rem;
+  border-radius: 4px;
+}

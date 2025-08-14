@@ -1,0 +1,96 @@
+# Planet Design Web
+
+Proyecto web para la empresa Planet Design, especializada en rotulación, diseño y personalización de vehículos y eventos.
+La web permite a los usuarios explorar productos, gestionar pedidos y clientes, y realizar compras con un carrito funcional.
+
+
+## Características
+
+- Página principal (Home) con navegación clara y visual.
+- Secciones de Productos, Clientes, Pedidos y Empresa.
+- Sistema de login y registro.
+- Carrito de compra funcional con contador y gestión de productos.
+- Acceso restringido a vistas de administración (Clientes y Pedidos).
+- Diseño moderno, profesional y responsive.
+- Imágenes destacadas en la Home y en la sección de Empresa.
+- Footer anclado al final de la página.
+- Interfaz amigable y accesible en dispositivos móviles y desktop.
+
+
+## Estructura del proyecto
+
+src/
+  assets/
+    imagen1.png
+    imagen2.png
+    imagen3.png
+    imagen4.png
+    imagen5.png
+    imagen6.png
+    imagen7.png
+    imagen8.png
+    imagen9.png
+    imagen10.png
+    letras.jpg
+    logo.png
+    vinilo.jpg
+  components/
+    Button/
+    Carousel/
+    Cart/
+    FieldForm/
+    Footer/
+    Header/
+    LoginForm/
+    Main/
+    RegisterForm
+  pages/
+    Clients/
+    Company/
+    Home/
+    Login/
+    Orders/
+    Products/
+  utils/
+    functions/
+    API/
+    routes
+index.html
+main.js
+style.css
+
+**Descripción de carpetas principales:**
+
+- `assets/`: Imágenes y recursos estáticos.
+- `components/`: Componentes reutilizables como Header, Footer, botones, formularios y carrito.
+- `pages/`: Vistas principales del proyecto.
+- `utils/`: Funciones auxiliares, configuración de rutas y llamadas a la API.
+- `index.html`: Entrada principal del proyecto.
+- `main.js`: Lógica principal de la aplicación.
+- `style.css`: Estilos globales.
+
+## Instalación
+
+1. Clona el repositorio.
+2. Instala las dependencias:
+3. Inicia el servidor de desarrollo.
+4. Abre tu navegador en http://localhost:3000 (o la URL que indique Vite).
+
+
+## Uso
+
+- Accede a la Home para navegar por las distintas secciones.
+- Solo los usuarios administradores pueden acceder a Clientes y Pedidos.
+- Añade productos al carrito desde la sección Productos.
+- Visualiza información de la empresa y fotos en la sección Empresa.
+
+
+## Tecnologías
+
+- HTML, CSS, JavaScript (ES6)
+- Vite (para desarrollo y bundling)
+
+## Autor
+
+Planet Design  
+Desarrollado por Mónica Sánchez Carrillo

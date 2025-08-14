@@ -1,0 +1,26 @@
+import { Home } from '../../pages/Home/Home.js';
+import { Products } from '../../pages/Products/Products.js';
+import { Login } from '../../pages/Login/Login.js';
+import { Company } from '../../pages/Company/Company.js';
+import { Clients } from '../../pages/Clients/Clients.js';
+import { Orders } from '../../pages/Orders/Orders.js';
+
+export const routes = [
+  { path: "/", text: "Home", page: Home },
+  { path: "/products", text: "Productos", page: Products },
+  { path: "/login", text: "Login", page: Login },
+  { path: "/company", text: "Empresa", page: Company },
+  { path: "/clients", text: "Clientes", page: Clients },
+  { path: "/orders", text: "Pedidos", page: Orders },
+];
+
+export function router() {
+  const main = document.getElementById("app");
+  if (!main) return;
+
+  let hash = window.location.hash || "#/";
+  const route = routes.find(r => `#${r.path}` === hash) || routes[0];
+
+  main.innerHTML = "";
+  main.appendChild(route.page());
+}

@@ -1,0 +1,16 @@
+.orders {
+  padding: 2rem;
+}
+.orders h2 {
+  margin-bottom: 1rem;
+}
+.orders ul {
+  list-style: none;
+  padding: 0;
+}
+.orders li {
+  margin-bottom: 0.5rem;
+  background: #e0f7fa;
+  padding: 0.5rem;
+  border-radius: 4px;
+}

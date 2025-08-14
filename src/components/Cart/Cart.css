@@ -1,0 +1,16 @@
+.cart {
+  padding: 2rem;
+}
+.cart h2 {
+  margin-bottom: 1rem;
+}
+.cart ul {
+  list-style: none;
+  padding: 0;
+}
+.cart li {
+  margin-bottom: 0.5rem;
+  background: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 4px;
+}

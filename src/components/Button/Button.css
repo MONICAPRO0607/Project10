@@ -1,0 +1,10 @@
+.main-button {
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+  background-color: var(--rtc-text-color);
+  color: var(--rtc-bg-color);
+  border: none;
+  cursor: pointer;
+  color: black;
+}
