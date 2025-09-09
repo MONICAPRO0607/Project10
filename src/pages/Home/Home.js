@@ -1,5 +1,5 @@
 import "./Home.css";
-import { Carousel } from "../../components/carousel/Carousel.js";
+import { Carousel } from "../../components/Carousel/Carousel.js";
 
 export const Home = () => {
   const div = document.createElement("div");
