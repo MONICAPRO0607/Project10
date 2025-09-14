@@ -15,12 +15,11 @@ export const Orders = async () => {
 
   try {
     const token = localStorage.getItem('token');
-    const res = await fetch('http://localhost:3000/api/v1/pedidos', {
-      headers: { Authorization: `Bearer ${token}` }
+    const pedidos = await API({
+      endpoint: 'pedidos',
+      token,
+      method: 'GET'
     });
-
-    if (!res.ok) throw new Error('Error al obtener pedidos');
-    const pedidos = await res.json();
 
     if (pedidos.length === 0) {
       const noOrders = document.createElement('p');

@@ -1,19 +1,19 @@
 import "./Home.css";
-import { Carousel } from "../../components/carousel/Carousel.js";
+import { Carousel } from "../../components/Carousel/Carousel.js";
 
 export const Home = () => {
   const div = document.createElement("div");
   div.classList.add("home");
 
   const carouselImages = [
-    new URL("../../assets/imagen1.png", import.meta.url).href,
-    new URL("../../assets/imagen2.png", import.meta.url).href,
-    new URL("../../assets/imagen3.png", import.meta.url).href,
-    new URL("../../assets/imagen4.png", import.meta.url).href,
-    new URL("../../assets/imagen6.png", import.meta.url).href,
-    new URL("../../assets/imagen7.png", import.meta.url).href,
-    new URL("../../assets/imagen9.png", import.meta.url).href,
-    new URL("../../assets/imagen10.png", import.meta.url).href
+    "/assets/Imagen1.png",
+    "/assets/Imagen2.png",
+    "/assets/Imagen3.png", 
+    "/assets/Imagen4.png",
+    "/assets/Imagen6.png", 
+    "/assets/Imagen7.png", 
+    "/assets/Imagen9.png", 
+    "/assets/Imagen10.png", 
   ];
   const carousel = Carousel(carouselImages);
 

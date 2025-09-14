@@ -8,7 +8,7 @@ export const Header = () => {
   nav.classList.add("navbar");
 
   const logo = document.createElement("img");
-  logo.src = new URL("../../assets/letras.jpg", import.meta.url).href;
+  logo.src = "/assets/letras.jpg";
   logo.alt = "Logo";
   logo.classList.add("logo");
   nav.prepend(logo);

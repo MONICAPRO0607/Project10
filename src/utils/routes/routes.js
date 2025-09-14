@@ -14,7 +14,7 @@ export const routes = [
   { path: "/orders", text: "Pedidos", page: Orders },
 ];
 
-export function router() {
+export async function router() {
   const main = document.getElementById("app");
   if (!main) return;
 
@@ -22,5 +22,7 @@ export function router() {
   const route = routes.find(r => `#${r.path}` === hash) || routes[0];
 
   main.innerHTML = "";
-  main.appendChild(route.page());
+
+  const pageNode = route.page.constructor.name === "AsyncFunction" ? await route.page() : route.page();
+  main.appendChild(pageNode);
 }

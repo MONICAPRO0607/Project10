@@ -2,7 +2,7 @@ import { createPage } from "../../utils/functions/createPage"
 import "./Company.css"
 
 export const Company = () => {
-  const div = createPage();
+  const div = createPage('company');
   div.classList.add("company");
 
   const title = document.createElement("h2");
@@ -13,7 +13,7 @@ export const Company = () => {
   imagesContainer.classList.add("company-images");
 
  const logoImg = document.createElement("img");
-  logoImg.src = new URL("../../assets/logo.png", import.meta.url).href;
+  logoImg.src = "/assets/logo.png";
   logoImg.alt = "Logo Planet Design";
   logoImg.classList.add("company-img", "company-logo");
 
@@ -31,7 +31,7 @@ export const Company = () => {
   `;
 
   const viniloImg = document.createElement("img");
-  viniloImg.src = new URL("../../assets/vinilo.jpg", import.meta.url).href;
+  viniloImg.src = "/assets/vinilo.jpg";
   viniloImg.alt = "Vehículo promocional";
   viniloImg.classList.add("company-img", "company-vinilo");
 

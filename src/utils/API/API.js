@@ -1,25 +1,22 @@
-const BASE_URL = "http://localhost:3000/api/v1";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api/v1";
 
 export const API = async ({ endpoint, token, method = "GET", body }) => {
-  const options = {
+   const options = {
     method,
     headers: {
       "Content-Type": "application/json",
     },
   };
 
-  if (token) {
-    options.headers.Authorization = `Bearer ${token}`;
-  }
+  if (token) options.headers.Authorization = `Bearer ${token}`;
+  if (body) options.body = JSON.stringify(body);
 
-  if (body) {
-    options.body = JSON.stringify(body);
-  }
-
-  try {
-    const res = await fetch(`${BASE_URL}/${endpoint}`, options);
+    try {
+    const url = `${BASE_URL.replace(/\/$/, "")}/${endpoint.replace(/^\//, "")}`;
+    const res = await fetch(url, options);
     if (!res.ok) {
-      throw new Error(`Error ${res.status}: ${res.statusText}`);
+      const text = await res.text().catch(() => null);
+      throw new Error(`Error ${res.status}: ${res.statusText} ${text ? ' - ' + text : ''}`);
     }
     return await res.json();
   } catch (err) {

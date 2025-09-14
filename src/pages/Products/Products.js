@@ -124,14 +124,12 @@ export const Products = async () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/api/v1/pedidos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      });
+      const res = await API({
+      endpoint: 'pedidos',
+      method: 'POST',
+      token,
+      body: payload
+    });
 
       if (!res.ok) throw new Error("Error al crear el pedido");
 
@@ -146,7 +144,6 @@ export const Products = async () => {
     }
   });
 
-  // Obtener productos
   const response = await API({
     endpoint: "products",
     token: localStorage.getItem("token"),
@@ -154,7 +151,6 @@ export const Products = async () => {
 
   console.log("Respuesta API productos:", response);
 
-  // Si la API devuelve { products: [...] } lo adaptamos
   const products = Array.isArray(response) ? response : response.products || [];
 
   for (const product of products) {

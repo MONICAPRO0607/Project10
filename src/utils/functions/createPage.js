@@ -1,10 +1,18 @@
 export const createPage = (id) => {
-  const main = document.querySelector("main");
-  const div = document.createElement("div");
+  let app = document.querySelector("#app");
 
-  main.innerHTML = "";
-  div.id = id;
+  if (!app) {
+    app = document.createElement("div");
+    app.id = "app";
+    document.body.appendChild(app);
+  }
 
-  main.append(div);
-  return div;
-}
+  app.innerHTML = "";
+
+  const pageDiv = document.createElement("div");
+  pageDiv.id = id;
+
+  app.appendChild(pageDiv);
+
+  return pageDiv;
+};
