@@ -12,19 +12,12 @@ export const LoginForm = (form) => {
   `;
 
   form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    try {
-      const result = await doAuth(e, 'login');
-      if (result.success) {
-        showToast({ message: 'Login correcto', type: 'success' });
-        window.dispatchEvent(new Event('login-success')); 
-      } else {
-        showToast({ message: result.message || 'Error en login', type: 'error' });
-      }
-    } catch (err) {
-      showToast({ message: 'Error de servidor', type: 'error' });
-    }
-  });
+  const result = await doAuth(e, 'login');
+  if (result.success) {
+    window.dispatchEvent(new Event('login-success'));
+    window.location.hash = "/";
+  }
+});
 
   form.append(
     Button({

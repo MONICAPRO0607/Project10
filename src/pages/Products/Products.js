@@ -1,5 +1,6 @@
 import { API } from "../../utils/API/API";
 import { createPage } from "../../utils/functions/createPage";
+import { showToast } from "../../components/Toast/Toast";
 import "./Products.css";
 
 export const Products = async () => {
@@ -147,14 +148,15 @@ export const Products = async () => {
     }
   });
 
-  const response = await API({
-    endpoint: "products",
-    token: localStorage.getItem("token"),
-  });
-
-  console.log("Respuesta API productos:", response);
-
-  const products = Array.isArray(response) ? response : response.products || [];
+   let products = [];
+    try {
+    const response = await API({ endpoint: "products" });
+    products = Array.isArray(response) ? response : [];
+    console.log("Productos cargados:", products);
+    } catch (err) {
+    console.error("Error al cargar productos:", err);
+    showToast({ message: "No se pudieron cargar los productos.", type: "error" });
+  };
 
   for (const product of products) {
     const productDiv = document.createElement("div");

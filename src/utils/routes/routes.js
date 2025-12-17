@@ -23,9 +23,17 @@ export async function router() {
   const route = routes.find(r => `#${r.path}` === hash) || routes[0];
 
   const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user"));
+
   if (route.protected && !token) {
     showToast({ message: "No autorizado. Debes iniciar sesión.", type: "error" });
     window.location.hash = "/login";
+    return;
+  };
+
+  if (route.adminOnly && (!token || user?.rol !== "admin")) {
+    showToast({ message: "Acceso restringido a administradores", type: "error" });
+    window.location.hash = "/";
     return;
   }
 

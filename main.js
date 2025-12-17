@@ -4,6 +4,7 @@ import { Main } from './src/components/Main/Main';
 import { Footer } from './src/components/Footer/Footer';
 import { router } from './src/utils/routes/routes';
 
+console.log("VITE_API_URL:", import.meta.env.VITE_API_URL);
 Header();
 const main = Main();
 

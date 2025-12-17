@@ -1,6 +1,6 @@
-
 import { routes } from "../../utils/routes/routes";
 import "./Header.css";
+import { showToast } from "../Toast/Toast";
 
 export const Header = () => {
   const header = document.createElement("header");
@@ -24,9 +24,12 @@ export const Header = () => {
   const renderMenu = () => {
     ul.innerHTML = '';
     const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem("user"));
 
   routes.forEach(route => {
-    if (route.protected && !token) return
+    if (route.protected && !token) return;
+    if (route.adminOnly && (!token || user?.rol !== "admin")) return;
+
     const li = document.createElement("li");
     const a = document.createElement("a");
     a.textContent = route.text;
@@ -37,12 +40,13 @@ export const Header = () => {
 
   const li = document.createElement('li');
     const a = document.createElement('a');
-    if (token) {
-      a.textContent = 'Cerrar sesión';
+    if (token && user) {
+      a.textContent = 'Cerrar sesión (${user.nombre})';
       a.href = '#';
       a.addEventListener('click', () => {
         localStorage.removeItem('token');
-        window.dispatchEvent(new Event('logout'));
+        localStorage.removeItem('user');
+        showToast({ message: "Has cerrado sesión", type: "info" });
         renderMenu();
       });
     } else {
@@ -63,5 +67,3 @@ export const Header = () => {
   window.addEventListener('login-success', renderMenu);
   window.addEventListener('logout', renderMenu);
 };
-
-  return header;
