@@ -109,11 +109,14 @@ export const Products = async () => {
   }
 
   els.submit.addEventListener("click", async () => {
-    if (!cart.length) return alert("El carrito está vacío.");
+    if (!cart.length) {
+      showToast({ message: "El carrito está vacío.", type: "error" });
+      return;
+    }
 
     const token = localStorage.getItem("token");
     if (!token) {
-      alert("Debes iniciar sesión para realizar el pedido.");
+      showToast({ message: "Debes iniciar sesión para realizar el pedido.", type: "error" });
       return;
     }
 
@@ -133,14 +136,14 @@ export const Products = async () => {
 
       if (!res.ok) throw new Error("Error al crear el pedido");
 
-      alert("¡Pedido realizado con éxito!");
+      showToast({ message: "¡Pedido realizado con éxito!", type: "success" });
       cart = [];
       saveCart();
       renderCart();
       drawer.classList.remove("open");
     } catch (err) {
       console.error(err);
-      alert("No se pudo realizar el pedido.");
+      showToast({ message: "No se pudo realizar el pedido.", type: "error" });
     }
   });
 

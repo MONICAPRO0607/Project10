@@ -21,7 +21,12 @@ export const Header = () => {
   const ul = document.createElement("ul");
   ul.classList.add("nav-list");
 
+  const renderMenu = () => {
+    ul.innerHTML = '';
+    const token = localStorage.getItem('token');
+
   routes.forEach(route => {
+    if (route.protected && !token) return
     const li = document.createElement("li");
     const a = document.createElement("a");
     a.textContent = route.text;
@@ -30,9 +35,33 @@ export const Header = () => {
     ul.append(li);
   });
 
-  menuButton.addEventListener("click", () => ul.classList.toggle("show"));
+  const li = document.createElement('li');
+    const a = document.createElement('a');
+    if (token) {
+      a.textContent = 'Cerrar sesión';
+      a.href = '#';
+      a.addEventListener('click', () => {
+        localStorage.removeItem('token');
+        window.dispatchEvent(new Event('logout'));
+        renderMenu();
+      });
+    } else {
+      a.textContent = 'Login';
+      a.href = '#/login';
+    }
+    li.append(a);
+    ul.append(li);
+  };
+
+  renderMenu();
+  menuButton.addEventListener('click', () => ul.classList.toggle('show'));
+
   nav.append(menuButton, ul);
   header.append(nav);
-
   document.body.insertBefore(header, document.body.firstChild);
+
+  window.addEventListener('login-success', renderMenu);
+  window.addEventListener('logout', renderMenu);
 };
+
+  return header;
