@@ -41,12 +41,13 @@ export const Header = () => {
   const li = document.createElement('li');
     const a = document.createElement('a');
     if (token && user) {
-      a.textContent = 'Cerrar sesión (${user.nombre})';
+      a.textContent = `Cerrar sesión (${user.nombre})`;
       a.href = '#';
       a.addEventListener('click', () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         showToast({ message: "Has cerrado sesión", type: "info" });
+        window.dispatchEvent(new Event("logout"));
         renderMenu();
       });
     } else {
