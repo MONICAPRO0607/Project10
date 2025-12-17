@@ -43,7 +43,8 @@ src/
     Header/
     LoginForm/
     Main/
-    RegisterForm
+    RegisterForm/
+    Toast
   pages/
     Clients/
     Company/
