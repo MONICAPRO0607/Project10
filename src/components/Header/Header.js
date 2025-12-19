@@ -21,6 +21,10 @@ export const Header = () => {
   const ul = document.createElement("ul");
   ul.classList.add("nav-list");
 
+  const closeMenu = () => {
+  ul.classList.remove("show");
+  };
+
   const renderMenu = () => {
     ul.innerHTML = '';
     const token = localStorage.getItem('token');
@@ -34,6 +38,7 @@ export const Header = () => {
     const a = document.createElement("a");
     a.textContent = route.text;
     a.href = `#${route.path}`;
+    a.addEventListener('click', closeMenu);
     li.append(a);
     ul.append(li);
   });
@@ -48,11 +53,13 @@ export const Header = () => {
         localStorage.removeItem('user');
         showToast({ message: "Has cerrado sesión", type: "info" });
         window.dispatchEvent(new Event("logout"));
+        closeMenu();
         renderMenu();
       });
     } else {
       a.textContent = 'Login';
       a.href = '#/login';
+      a.addEventListener('click', closeMenu);
     }
     li.append(a);
     ul.append(li);
