@@ -128,9 +128,7 @@ export const Products = async () => {
 
     const payload = {
       tipo: 'Pedido web',
-      materiales: cart
-        .map((i) => `${i.categoria} - ${i.subcategoria}`)
-        .join(' | '),
+      productos: cart,
       medidas: '-'
     }
 
@@ -142,7 +140,7 @@ export const Products = async () => {
         body: payload
       })
 
-      if (!res.ok) throw new Error('Error al crear el pedido')
+      if (!res || res.error) throw new Error('Error al crear el pedido')
 
       showToast({ message: '¡Pedido realizado con éxito!', type: 'success' })
       cart = []
@@ -158,8 +156,9 @@ export const Products = async () => {
   let products = []
   try {
     const response = await API({ endpoint: 'products' })
-    products = Array.isArray(response) ? response : []
-    console.log('Productos cargados:', products)
+    products = Array.isArray(response.data) ? response.data : []
+    // console.log('Productos cargados:', products)
+    console.log('Respuesta API completa:', response)
   } catch (err) {
     console.error('Error al cargar productos:', err)
     showToast({
@@ -186,6 +185,7 @@ export const Products = async () => {
         subLi.textContent = sub
         subLi.addEventListener('click', () => {
           cart.push({
+            id: product._id,
             categoria: h3.textContent,
             subcategoria: sub
           })

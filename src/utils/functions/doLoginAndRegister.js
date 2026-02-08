@@ -25,7 +25,7 @@ export const doAuth = async (e, action) => {
 
   try {
     const res = await API({
-      endpoint: `/user/${action}`,
+      endpoint: `/cliente/${action}`,
       body,
       method: 'POST'
     })

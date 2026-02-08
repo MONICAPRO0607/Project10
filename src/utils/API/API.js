@@ -4,6 +4,7 @@ if (!BASE_URL) {
   throw new Error("❌ VITE_API_URL no está definida. Revisa el .env");
 }
 
+
 export const API = async ({ endpoint, token, method = "GET", body }) => {
    const options = {
     method,

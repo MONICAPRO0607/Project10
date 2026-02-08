@@ -12,10 +12,6 @@ export const Login = () => {
 
   const form = document.createElement('form');
 
-  form.addEventListener('submit', (e) => {
-    doAuth(e, showLogin ? 'login' : 'register');
-  });
-
   LoginForm(form);
 
   const toggleButton = Button({
